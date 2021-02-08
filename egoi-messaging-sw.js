@@ -1,14 +1,14 @@
 /*!
  *
- * E-goi - Email marketing platform
+ * E-goi - Web Push Services
  *
  * JavaScript WebPush client
  *
- * @date 24-01-2018 11:00:01
+ * @date 08-02-2021 16:36:00
  * @License Proprietary
  * @Version 1.0
  *
- * All rights reserved. 2018
+ * All rights reserved. 2021
  *
  */
 importScripts('https://www.gstatic.com/firebasejs/3.5.2/firebase-app.js');
@@ -20,7 +20,6 @@ firebase.initializeApp({
 });
 
 const messaging = firebase.messaging();
-
 
 var egoiapp = {};
 
