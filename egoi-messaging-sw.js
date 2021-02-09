@@ -127,6 +127,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
     let options = {
         body: "Egoi Web Push Default Message",
         icon: "https://cdn-static.egoiapp2.com/img/egoi-default-icon.jpg",
+        image: '',
         requireInteraction: false,
         tag: 'egoi-push',
         click_action: "https://www.e-goi.com"
@@ -148,6 +149,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
         options = {
             body: payload.data.notification.body !== undefined ? payload.data.notification.body : options.body,
             icon: payload.data.notification.icon !== undefined ? payload.data.notification.icon : options.icon,
+            image: payload.data.notification.image !== undefined ? payload.data.notification.image : options.image,
             requireInteraction: payload.data.egoiCustomData.requireInteraction !== undefined ? payload.data.egoiCustomData.requireInteraction : true,
             tag: payload.data.egoiCustomData.tag !== undefined ? payload.data.egoiCustomData.tag : 'egoi-push',
             click_action: payload.data.notification.click_action !== undefined ? payload.data.notification.click_action : options.click_action
@@ -198,9 +200,9 @@ messaging.setBackgroundMessageHandler(function (payload) {
             'Content-Type': 'application/json'
         })
     })
-    .then(response => console.log('Success:', response))
-    .catch(error => console.error('Error:', error));
-    
+        .then(response => console.log('Success:', response))
+        .catch(error => console.error('Error:', error));
+
     return self.registration.showNotification(title, options);
 });
 
@@ -230,11 +232,11 @@ self.addEventListener('notificationclick', function (event) {
             'Content-Type': 'application/json'
         })
     })
-    .then(response => {
-        console.log('Success:', response.status)
-        console.log('Success:', response)
-    })
-    .catch(error => console.error('Error:', error));
+        .then(response => {
+            console.log('Success:', response.status)
+            console.log('Success:', response)
+        })
+        .catch(error => console.error('Error:', error));
 
     event.waitUntil(clients.matchAll({
         type: "window"
